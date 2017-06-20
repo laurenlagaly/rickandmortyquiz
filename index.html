@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rick and Morty Trivia</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="grid.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <header>
+      <div class="header-img">
+        <img src="rickMortyLogo.png" alt="Rick_and_Morty_logo" class="logo"/>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-3"></div>
+          <div id="dynamic-col" class="col-3 start-box">
+            <div class="question-box">
+              <button type="button" id="start" class="btn button-primary">Start Quiz</button>
+              <div id="end" class="final-score" style="display: none">
+                <div class="current-score"></div>
+                <button type="button" id="end-btn" class="btn button-primary">Play Again</button>
+              </div>
+              <div class="question-answer-text" style="display: none">
+                <h2 id="question-number-status">Question X of 10</h2>
+                <p id="question-text">Actual text of the question</p>
+                <form id="answer-list">
+                  <label class="answer">
+                    <input type="radio" name="answerChoice" required value="0">
+                    <span>text</span>
+                  </label>
+                  <label class="answer">
+                    <input type="radio" name="answerChoice" required value="1">
+                    <span>text</span>
+                  </label>
+                  <label class="answer">
+                    <input type="radio" name="answerChoice" required value="2">
+                    <span>text</span>
+                  </label>
+                  <label class="answer">
+                    <input type="radio" name="answerChoice" required value="3">
+                    <span>text</span>
+                  </label>
+                  <button type="submit" class="btn button-primary">Submit Answer</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+    </main>
+    <!-- Modal content -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>You were correct!</h2>
+      </div>
+      <div class="modal-body">
+        <img src="" class="modal-gif"/>
+        <p class="display-correct"></p>
+      </div>
+      <div class="modal-footer">
+        <h3 class="current-score">Current Score: x correct, x incorrect</h3>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

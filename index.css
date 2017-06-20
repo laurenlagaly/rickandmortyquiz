@@ -1,0 +1,208 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('http://orig05.deviantart.net/b424/f/2016/258/0/5/rick_and_morty_background_no_4_by_jurokoo-dahrvd7.png') no-repeat left bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}  
+.col-3 {
+  min-height: 1px;
+}
+
+.header-img {
+  width: 100%;
+  text-align: center;
+}
+
+.logo {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.title {
+  display: inline-block;
+  color: #00B0C7;
+}
+
+.question-box {
+  background-color: rgba(255,255,255,.9);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.answer {
+  display: block;
+  max-width: 600px;
+  padding: 5px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+    
+.button-primary {
+  color: #00B0C7;
+  background-image: none;
+  background-color: transparent;
+  border-color: #00B0C7;
+}
+
+.button-primary:hover {
+  color: #fff;
+  background-color: #00B0C7;
+  border-color: #00B0C7;
+}
+
+.answer-input:checked {
+  background-color: blue;
+}
+
+.modal-gif {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 350px;
+}
+
+.current-score {
+
+}
+
+#start {
+  display: block;
+  margin: 0 auto;
+}
+
+.start-box {
+  float: none !important;
+  margin: 0 auto;
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #00B0C7;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+    background-color: #00B0C7;
+    padding: 2px 16px;
+    color: white;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Non-mobile, grid */
+@media screen and (min-width: 640px) {
+  body {
+    background: url('http://orig05.deviantart.net/b424/f/2016/258/0/5/rick_and_morty_background_no_4_by_jurokoo-dahrvd7.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .header-img {
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .logo {
+    margin: 20px,0,0,20px;
+  }
+
+  .modal-content {
+    width: 50%;
+  }
+
+  .modal-gif {
+    height: 300px;
+    width: auto;
+  }
+}
