@@ -50,8 +50,6 @@ var STORE = [
       answer: 1
   }   
   ];
-
-  STORE = STORE.splice(8);
   
 var currentScore = {
   correct: [],
@@ -91,13 +89,15 @@ var rickMortyQuiz = {
     $(".current-score").text(txt + " Score: " + correctTotal + " correct, " + incorrectTotal + " incorrect");
   },
   playAgain:function(){
-    rickMortyQuiz.question = 0;
     $(".question-answer-text").hide();
     $("#end").show();
     rickMortyQuiz.displayCurrentScore("Final");
     $("#end-btn").click(function()  {
       $("#end").hide();
+      rickMortyQuiz.question = 0;
       $(".question-answer-text").show();
+      currentScore.correct = [];
+      currentScore.incorrect = [];
       rickMortyQuiz.renderCurrentQuestion();
   });
   },
@@ -106,6 +106,7 @@ var rickMortyQuiz = {
     rickMortyQuiz.submitAnswer();
   },
   submitAnswer:function(){
+    $('#answer-list').on('submit',function(event){
     event.preventDefault();
     var question = rickMortyQuiz.question;
     var userQA = {
@@ -123,7 +124,6 @@ var rickMortyQuiz = {
       $("#myModal img").attr("src", "incorrectAnswer.gif");
       $(".modal-header h2").html("<h2>You were incorrect!</h2>");
       var i = STORE[question].answer;
-      $(".display-correct").text("Correct answer: " + STORE[question].choices[i]);
       currentScore.incorrect.push(userQA);
     }
     
@@ -135,6 +135,7 @@ var rickMortyQuiz = {
     else {
       rickMortyQuiz.playAgain();
     }
+  })
   }
 }
 

@@ -82,13 +82,13 @@ body {
   max-width: 350px;
 }
 
-.current-score {
-
-}
-
 #start {
   display: block;
   margin: 0 auto;
+}
+
+#end-btn {
+ margin-top: 10px;
 }
 
 .start-box {
