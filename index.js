@@ -57,49 +57,57 @@ var currentScore = {
   correct: [],
   incorrect: []
 };
-  
-var question = 0;
 
-
-function startQuiz() {
-  $("#start").click(function()  {
+var rickMortyQuiz = {
+  question:0,
+  startQuiz:function(){
+    $("#start").click(function()  {
     $("#dynamic-col").removeClass("col-3 start-box").addClass("col-6");
     $(this).hide();
     $(".question-answer-text").show();
-    renderCurrentQuestion();
+    rickMortyQuiz.renderCurrentQuestion();
   });
   $("span.close").click(function (){
     $("#myModal").hide();
   });
   window.onclick = function(event) { if (event.target == $("#myModal")[0]) { $("#myModal").hide()} };
-}
-
-function renderCurrentQuestion() {
-  var currentQuestion = STORE[question];
-  $("input[type='radio']").attr('checked', false)
-  $("#question-text").text(currentQuestion.question);
-  $('.answer span').each(function(i,x){
-    $(x).text(currentQuestion.choices[i]);
+  },
+  renderCurrentQuestion:function(){
+    var currentQuestion = STORE[rickMortyQuiz.question];
+    $("input[type='radio']").attr('checked', false)
+    $("#question-text").text(currentQuestion.question);
+    $('.answer span').each(function(i,x){
+      $(x).text(currentQuestion.choices[i]);
+    });
+    $("#question-number-status").text("Question " + (rickMortyQuiz.question + 1) + " of " + STORE.length);
+    rickMortyQuiz.displayCurrentScore();
+  },
+  displayCurrentScore:function(txt){
+    var correctTotal = currentScore.correct.length;
+    var incorrectTotal = currentScore.incorrect.length;
+    console.log(txt);
+    console.log(txt === undefined);
+    txt === undefined ? txt = "Current" : txt = txt;
+    $(".current-score").text(txt + " Score: " + correctTotal + " correct, " + incorrectTotal + " incorrect");
+  },
+  playAgain:function(){
+    rickMortyQuiz.question = 0;
+    $(".question-answer-text").hide();
+    $("#end").show();
+    rickMortyQuiz.displayCurrentScore("Final");
+    $("#end-btn").click(function()  {
+      $("#end").hide();
+      $(".question-answer-text").show();
+      rickMortyQuiz.renderCurrentQuestion();
   });
-  $("#question-number-status").text("Question " + (question + 1) + " of " + STORE.length);
-  displayCurrentScore();
-}
-
-function displayCurrentScore(txt) {
-  var correctTotal = currentScore.correct.length;
-  var incorrectTotal = currentScore.incorrect.length;
-  console.log(txt);
-  console.log(txt === undefined);
-  txt === undefined ? txt = "Current" : txt = txt;
-  $(".current-score").text(txt + " Score: " + correctTotal + " correct, " + incorrectTotal + " incorrect");
-}
-
-function submitAnswer() {
-  $('#answer-list').on('submit',function(event){ 
+  },
+  runQuiz:function(){
+    rickMortyQuiz.startQuiz();
+    rickMortyQuiz.submitAnswer();
+  },
+  submitAnswer:function(){
     event.preventDefault();
-    //console.log($('input[name=answerChoice]:checked').val());
-    //console.log(STORE[question].answer == $('input[name=answerChoice]:checked').val());
-    //console.log(STORE[question].answer);
+    var question = rickMortyQuiz.question;
     var userQA = {
         userQ: question,
         userA: $('input[name=answerChoice]:checked').val()
@@ -120,35 +128,16 @@ function submitAnswer() {
     }
     
     if (question < (STORE.length - 1)) {
-    question++;
+    rickMortyQuiz.question++;
     console.log(STORE.length + ".");
-    renderCurrentQuestion();
+    rickMortyQuiz.renderCurrentQuestion();
     }
     else {
-      playAgain();
+      rickMortyQuiz.playAgain();
     }
-    
-    console.log(question);
-  });
+  }
 }
 
-function playAgain() {
-  question = 0;
-  $(".question-answer-text").hide();
-  $("#end").show();
-  displayCurrentScore("Final");
-  $("#end-btn").click(function()  {
-    $("#end").hide();
-    $(".question-answer-text").show();
-    renderCurrentQuestion();
-  });
-}
-
-function runQuiz() {
-  startQuiz();
-  submitAnswer();
-}
-
-$(runQuiz);
+$(rickMortyQuiz.runQuiz);
 
   
